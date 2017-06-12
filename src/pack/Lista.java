@@ -34,33 +34,32 @@ public class Lista {
 	}
 
 	public void ImprimirListaComp(int n) {
-		for (int i = 1; i <= n; i++) {
-			if (nodo.getAnt() != null) {
-				System.out.println(" valor  " + nodo.getValor() + " Ant " + nodo.getAnt().getValor() + " Prox "
-						+ nodo.getProx().getValor());
-			}
 
-			nodo = nodo.getAnt();
+		for (int i = 1; i <= n; i++) {
+			nodo = nodo.getProx();
+
+			System.out.print(nodo.getValor() + "| ");
 
 		}
-
+		System.out.println();
 	}
 
 	public void Remocao(int m) {
+
 		while (nodo.getAnt() != nodo) {
 			for (int i = 1; i <= m; i++) {
 				nodo = nodo.getProx();
 
 			}
+
 			aux = nodo;
 			while (nodo.getProx() != aux || aux.getAnt() != nodo) {
 				nodo = nodo.getProx();
-				System.out.print(nodo.getValor() + "|");
+				System.out.print(nodo.getValor() + " |");
 
 			}
-			nodo = aux;
-
 			System.out.println();
+			nodo = aux;
 
 			nodo.getProx().setAnt(nodo.getAnt());
 			nodo.getAnt().setProx(nodo.getProx());
